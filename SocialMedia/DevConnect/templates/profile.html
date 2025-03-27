@@ -1,0 +1,57 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user_profile.username }}'s Profile</title>
+</head>
+<body>
+    <h1>{{ user_profile.username }}'s Profile</h1>
+    <p>{{ user_profile.bio }}</p>
+
+    <h2>Your Posts</h2>
+    {% for post in posts %}
+        <div>
+            <p><strong>{{ post.author.username }}</strong></p>
+            <p>{{ post.content }}</p>
+        </div>
+    {% endfor %}
+
+    <h3>Followers</h3>
+    <ul>
+        {% for follower in followers %}
+            <li>{{ follower.follower.username }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Following</h3>
+    <ul>
+        {% for follow in following %}
+            <li>{{ follow.following.username }}</li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username  }}'s Profile</title>
+</head>
+<body>
+    <h1>{{ user.username }}'s Profile</h1>
+    <p>{{ user.bio }}</p>
+    
+    <h2>Your Posts</h2>
+    {% for post in posts %}
+        <div>
+            <p><strong>{{ post.author.username }}</strong></p>
+            <p>{{ post.content }}</p>
+        </div>
+    {% endfor %}        
+</body>
+</html>

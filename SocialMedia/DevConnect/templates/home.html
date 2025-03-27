@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - DevConnect</title>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create_post/">Create Post</a></li>
+                <li><a href="/myposts/">My Posts</a></li>
+                <li><a href="/profile/">Profile</a></li>
+                <li><a href="/logout/">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2>Welcome, {{ user.username }}!</h2>
+
+        <!-- Display Posts -->
+        <div class="feed">
+            {% for post in posts %}
+                <div class="post">
+                    <p><strong>{{ post.author.username }}</strong>: {{ post.content }}</p>
+
+                    <p>
+                        <a href="{% url 'like_post' post.id %}">
+                            {% if post.id in liked_posts %}
+                                Unlike
+                            {% else %}
+                                Like
+                            {% endif %}
+                        </a>
+                        <span>({{ post.like_count }}) </span>
+                    </p>
+
+                    <a href="/post/{{ post.id }}/comments/">Add a Comment</a>
+                    
+                    <!-- Show existing comments if available -->
+                   
+                    
+                    <!-- Comment form -->
+                    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 DevConnect. All rights reserved.</p>
+    </footer>
+</body>
+</html>
